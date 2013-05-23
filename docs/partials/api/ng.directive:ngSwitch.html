@@ -19,7 +19,7 @@ attribute is displayed.</p>
 <p>Additionally, you can also provide animations via the ngAnimate attribute to animate the <strong>enter</strong>
 and <strong>leave</strong> effects.</p></div>
 <h2 id="Usage">Usage</h2>
-<div class="usage"><p>This directive can be used as custom element, but we aware of <a href="guide/ie">IE restrictions</a>.</p><pre><code ng:non-bindable="">&lt;ANY ng-switch="expression"&gt;
+<div class="usage"><p>This directive can be used as custom element, but be aware of <a href="guide/ie">IE restrictions</a>.</p><pre><code ng:non-bindable="">&lt;ANY ng-switch="expression"&gt;
 &lt;ANY ng-switch-when="matchValue1"&gt;...&lt;/ANY&gt;
 &lt;ANY ng-switch-when="matchValue2"&gt;...&lt;/ANY&gt;
 &lt;ANY ng-switch-default&gt;...&lt;/ANY&gt;
@@ -29,19 +29,15 @@ and <strong>leave</strong> effects.</p></div>
 <div class="directive-info"><ul><li>This directive creates new scope.</li>
 </ul>
 </div>
-<h3 id="Parameters">Parameters</h3>
-<ul class="parameters"><li><code ng:non-bindable="">ngSwitch|on – {*} – </code>
-<p>expression to match against <tt>ng-switch-when</tt>.</p></li>
-</ul>
-<h3 id="Animations">Animations</h3>
+<h4 id="parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ngSwitch|on</td><td><a href="" class="label type-hint type-hint-object">*</a></td><td><p>expression to match against <tt>ng-switch-when</tt>.</p></td></tr></tbody></table><h3 id="Animations">Animations</h3>
 <div class="animations"><ul><li>enter - happens after the ngSwtich contents change and the matched child element is placed inside the container</li><li>leave - happens just after the ngSwitch contents change and just before the former contents are removed from the DOM</li></ul></div>
 </div>
 <h2 id="Example">Example</h2>
-<div class="example"><h4>Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-178" source-edit-css="animations.css" source-edit-js="script.js-179" source-edit-unit="" source-edit-scenario="scenario.js-180"></div>
+<div class="example"><h4>Source</h2>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-184" source-edit-css="animations.css" source-edit-js="script.js-185" source-edit-unit="" source-edit-scenario="scenario.js-186"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-178" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-178">
+<pre class="prettyprint linenums" ng-set-text="index.html-184" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-184">
   <div ng-controller="Ctrl">
     <select ng-model="selection" ng-options="item for item in items">
     </select>
@@ -61,7 +57,7 @@ and <strong>leave</strong> effects.</p></div>
 <div class="tab-pane" title="animations.css">
 <pre class="prettyprint linenums" ng-set-text="animations.css"></pre>
 <style type="text/css" id="animations.css">
-  .example-leave-setup, .example-enter-setup {
+  .example-leave, .example-enter {
     -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
     -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
     -ms-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
@@ -80,24 +76,24 @@ and <strong>leave</strong> effects.</p></div>
     padding:10px;
   }
 
-  .example-enter-setup {
+  .example-enter {
     top:-50px;
   }
-  .example-enter-start.example-enter-start {
+  .example-enter.example-enter-active {
     top:0;
   }
 
-  .example-leave-setup {
+  .example-leave {
     top:0;
   }
-  .example-leave-start.example-leave-start {
+  .example-leave.example-leave-active {
     top:50px;
   }
 </style>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-179"></pre>
-<script type="text/ng-template" id="script.js-179">
+<pre class="prettyprint linenums" ng-set-text="script.js-185"></pre>
+<script type="text/ng-template" id="script.js-185">
   function Ctrl($scope) {
     $scope.items = ['settings', 'home', 'other'];
     $scope.selection = $scope.items[0];
@@ -105,8 +101,8 @@ and <strong>leave</strong> effects.</p></div>
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-180"></pre>
-<script type="text/ng-template" id="scenario.js-180">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-186"></pre>
+<script type="text/ng-template" id="scenario.js-186">
   it('should start in settings', function() {
     expect(element('.doc-example-live [ng-switch]').text()).toMatch(/Settings Div/);
   });
@@ -120,6 +116,6 @@ and <strong>leave</strong> effects.</p></div>
   });
 </script>
 </div>
-</div><div class="pull-right"> <button class="btn btn-primary" ng-click="animationsOff=true" ng-hide="animationsOff">Animations on</button> <button class="btn btn-primary disabled" ng-click="animationsOff=false" ng-show="animationsOff">Animations off</button></div><h4>Demo</h4>
-<div class="well doc-example-live animator-container" ng-class="{'animations-off':animationsOff == true}" ng-embed-app="" ng-set-html="index.html-178" ng-eval-javascript="script.js-179"></div></div>
+</div><div class="pull-right"> <button class="btn btn-primary" ng-click="animationsOff=true" ng-hide="animationsOff">Animations on</button> <button class="btn btn-primary disabled" ng-click="animationsOff=false" ng-show="animationsOff">Animations off</button></div><h2>Demo</h4>
+<div class="well doc-example-live animator-container" ng-class="{'animations-off':animationsOff == true}" ng-embed-app="" ng-set-html="index.html-184" ng-eval-javascript="script.js-185"></div></div>
 </div>

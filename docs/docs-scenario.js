@@ -52,19 +52,6 @@ describe("angular+jqlite", function() {
 
 });
 
-  describe("cookbook/helloworld", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/cookbook/helloworld");
-    });
-  
-    it('should change the binding when user enters text', function() {
-      expect(binding('name')).toEqual('World');
-      input('name').enter('angular');
-      expect(binding('name')).toEqual('angular');
-    });
-
-});
-
   describe("cookbook/deeplinking", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/cookbook/deeplinking");
@@ -80,6 +67,42 @@ describe("angular+jqlite", function() {
         expect(element('[ng-view]').text()).toMatch(/Hello yourname/);
       });
 
+});
+
+  describe("cookbook/mvc", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/cookbook/mvc");
+    });
+  
+      it('should play a game', function() {
+       piece(1, 1);
+       expect(binding('nextMove')).toEqual('O');
+       piece(3, 1);
+       expect(binding('nextMove')).toEqual('X');
+       piece(1, 2);
+       piece(3, 2);
+       piece(1, 3);
+       expect(element('.winner').text()).toEqual('Player X has won!');
+      });
+    
+      function piece(row, col) {
+        element('.board tr:nth-child('+row+') td:nth-child('+col+')').click();
+      }
+
+});
+
+  describe("guide/bootstrap", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/guide/bootstrap");
+    });
+  
+});
+
+  describe("guide/compiler", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/guide/compiler");
+    });
+  
 });
 
   describe("cookbook/form", function() {
@@ -122,66 +145,22 @@ describe("angular+jqlite", function() {
 
 });
 
-  describe("guide/bootstrap", function() {
+  describe("cookbook/helloworld", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/bootstrap");
+      browser().navigateTo("index-nocache.html#!/cookbook/helloworld");
     });
   
-});
-
-  describe("cookbook/index", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/cookbook/index");
+    it('should change the binding when user enters text', function() {
+      expect(binding('name')).toEqual('World');
+      input('name').enter('angular');
+      expect(binding('name')).toEqual('angular');
     });
-  
-});
 
-  describe("cookbook/mvc", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/cookbook/mvc");
-    });
-  
-      it('should play a game', function() {
-       piece(1, 1);
-       expect(binding('nextMove')).toEqual('O');
-       piece(3, 1);
-       expect(binding('nextMove')).toEqual('X');
-       piece(1, 2);
-       piece(3, 2);
-       piece(1, 3);
-       expect(element('.winner').text()).toEqual('Player X has won!');
-      });
-    
-      function piece(row, col) {
-        element('.board tr:nth-child('+row+') td:nth-child('+col+')').click();
-      }
-
-});
-
-  describe("guide/compiler", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/compiler");
-    });
-  
-});
-
-  describe("guide/dev_guide.mvc.understanding_controller", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/dev_guide.mvc.understanding_controller");
-    });
-  
 });
 
   describe("guide/concepts", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/guide/concepts");
-    });
-  
-});
-
-  describe("guide/dev_guide.mvc", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/dev_guide.mvc");
     });
   
 });
@@ -193,9 +172,37 @@ describe("angular+jqlite", function() {
   
 });
 
+  describe("guide/dev_guide.mvc.understanding_controller", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/guide/dev_guide.mvc.understanding_controller");
+    });
+  
+});
+
   describe("guide/dev_guide.mvc.understanding_model", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/guide/dev_guide.mvc.understanding_model");
+    });
+  
+});
+
+  describe("guide/dev_guide.services.$location", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/guide/dev_guide.services.$location");
+    });
+  
+});
+
+  describe("cookbook/index", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/cookbook/index");
+    });
+  
+});
+
+  describe("guide/dev_guide.mvc", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/guide/dev_guide.mvc");
     });
   
 });
@@ -223,13 +230,6 @@ describe("angular+jqlite", function() {
       expect(element(':input[ng\\:model="message"]').val()).toEqual('test');
     });
 
-});
-
-  describe("guide/dev_guide.services.$location", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/dev_guide.services.$location");
-    });
-  
 });
 
   describe("guide/dev_guide.services.managing_dependencies", function() {
@@ -260,13 +260,6 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("guide/dev_guide.services.understanding_services", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/dev_guide.services.understanding_services");
-    });
-  
-});
-
   describe("guide/dev_guide.templates.css-styling", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/guide/dev_guide.templates.css-styling");
@@ -274,22 +267,23 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("guide/dev_guide.templates.filters.creating_filters", function() {
+  describe("guide/dev_guide.templates.filters.using_filters", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/dev_guide.templates.filters.creating_filters");
+      browser().navigateTo("index-nocache.html#!/guide/dev_guide.templates.filters.using_filters");
     });
   
-    it('should reverse greeting', function() {
-      expect(binding('greeting|reverse')).toEqual('olleh');
-      input('greeting').enter('ABC');
-      expect(binding('greeting|reverse')).toEqual('CBA');
-    });
-
 });
 
-  describe("guide/dev_guide.templates.filters", function() {
+  describe("guide/dev_guide.services.understanding_services", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/dev_guide.templates.filters");
+      browser().navigateTo("index-nocache.html#!/guide/dev_guide.services.understanding_services");
+    });
+  
+});
+
+  describe("guide/dev_guide.unit-testing", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/guide/dev_guide.unit-testing");
     });
   
 });
@@ -321,34 +315,6 @@ describe("angular+jqlite", function() {
         expect(element('.zippy').prop('className')).toMatch(/opened/);
       });
 
-});
-
-  describe("guide/dev_guide.templates.filters.using_filters", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/dev_guide.templates.filters.using_filters");
-    });
-  
-});
-
-  describe("guide/forms", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/forms");
-    });
-  
-});
-
-  describe("guide/dev_guide.templates", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/dev_guide.templates");
-    });
-  
-});
-
-  describe("guide/dev_guide.unit-testing", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/dev_guide.unit-testing");
-    });
-  
 });
 
   describe("guide/expression", function() {
@@ -383,6 +349,13 @@ describe("angular+jqlite", function() {
 
 });
 
+  describe("guide/forms", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/guide/forms");
+    });
+  
+});
+
   describe("guide/i18n", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/guide/i18n");
@@ -397,16 +370,29 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("guide/introduction", function() {
+  describe("guide/dev_guide.templates.filters.creating_filters", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/introduction");
+      browser().navigateTo("index-nocache.html#!/guide/dev_guide.templates.filters.creating_filters");
+    });
+  
+    it('should reverse greeting', function() {
+      expect(binding('greeting|reverse')).toEqual('olleh');
+      input('greeting').enter('ABC');
+      expect(binding('greeting|reverse')).toEqual('CBA');
+    });
+
+});
+
+  describe("guide/dev_guide.templates.filters", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/guide/dev_guide.templates.filters");
     });
   
 });
 
-  describe("guide/index", function() {
+  describe("guide/dev_guide.templates", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/index");
+      browser().navigateTo("index-nocache.html#!/guide/dev_guide.templates");
     });
   
 });
@@ -414,20 +400,6 @@ describe("angular+jqlite", function() {
   describe("guide/module", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/guide/module");
-    });
-  
-});
-
-  describe("guide/type", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/guide/type");
-    });
-  
-});
-
-  describe("misc/downloading", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/misc/downloading");
     });
   
 });
@@ -460,9 +432,9 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("misc/started", function() {
+  describe("misc/downloading", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/misc/started");
+      browser().navigateTo("index-nocache.html#!/misc/downloading");
     });
   
 });
@@ -481,16 +453,16 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("tutorial/step_00", function() {
+  describe("guide/index", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/tutorial/step_00");
+      browser().navigateTo("index-nocache.html#!/guide/index");
     });
   
 });
 
-  describe("tutorial/step_01", function() {
+  describe("guide/introduction", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/tutorial/step_01");
+      browser().navigateTo("index-nocache.html#!/guide/introduction");
     });
   
 });
@@ -523,16 +495,16 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("tutorial/step_06", function() {
+  describe("misc/started", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/tutorial/step_06");
+      browser().navigateTo("index-nocache.html#!/misc/started");
     });
   
 });
 
-  describe("tutorial/step_07", function() {
+  describe("tutorial/step_00", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/tutorial/step_07");
+      browser().navigateTo("index-nocache.html#!/tutorial/step_00");
     });
   
 });
@@ -551,16 +523,9 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("tutorial/the_end", function() {
+  describe("tutorial/step_01", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/tutorial/the_end");
-    });
-  
-});
-
-  describe("tutorial/step_10", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/tutorial/step_10");
+      browser().navigateTo("index-nocache.html#!/tutorial/step_01");
     });
   
 });
@@ -568,6 +533,34 @@ describe("angular+jqlite", function() {
   describe("tutorial/step_11", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/tutorial/step_11");
+    });
+  
+});
+
+  describe("tutorial/the_end", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/tutorial/the_end");
+    });
+  
+});
+
+  describe("tutorial/step_06", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/tutorial/step_06");
+    });
+  
+});
+
+  describe("tutorial/step_07", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/tutorial/step_07");
+    });
+  
+});
+
+  describe("tutorial/step_10", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/tutorial/step_10");
     });
   
 });
@@ -775,6 +768,13 @@ describe("angular+jqlite", function() {
   
 });
 
+  describe("api/ng.$anchorScroll", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.$anchorScroll");
+    });
+  
+});
+
   describe("api/angular.Module", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/api/angular.Module");
@@ -785,13 +785,6 @@ describe("angular+jqlite", function() {
   describe("api/angular.module", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/api/angular.module");
-    });
-  
-});
-
-  describe("api/ng.$anchorScroll", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.$anchorScroll");
     });
   
 });
@@ -838,27 +831,6 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("api/ng.$controllerProvider", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.$controllerProvider");
-    });
-  
-});
-
-  describe("api/ng.$controller", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.$controller");
-    });
-  
-});
-
-  describe("api/ng.directive:a", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.directive:a");
-    });
-  
-});
-
   describe("api/ng.$compile", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/api/ng.$compile");
@@ -882,6 +854,27 @@ describe("angular+jqlite", function() {
   describe("api/ng.$compile.directive.Attributes", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/api/ng.$compile.directive.Attributes");
+    });
+  
+});
+
+  describe("api/ng.$controllerProvider", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.$controllerProvider");
+    });
+  
+});
+
+  describe("api/ng.$controller", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.$controller");
+    });
+  
+});
+
+  describe("api/ng.directive:a", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.directive:a");
     });
   
 });
@@ -935,6 +928,13 @@ describe("angular+jqlite", function() {
   describe("api/ng.directive:ngSrc", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/api/ng.directive:ngSrc");
+    });
+  
+});
+
+  describe("api/ng.directive:ngSrcset", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngSrcset");
     });
   
 });
@@ -1045,96 +1045,6 @@ describe("angular+jqlite", function() {
      input('userType').enter('');
      expect(binding('userType')).toEqual('');
      expect(binding('myForm.input.$valid')).toEqual('false');
-    });
-
-});
-
-  describe("api/ng.directive:ngBind", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngBind");
-    });
-  
-      it('should check ng-bind', function() {
-        expect(using('.doc-example-live').binding('name')).toBe('Whirled');
-        using('.doc-example-live').input('name').enter('world');
-        expect(using('.doc-example-live').binding('name')).toBe('world');
-      });
-
-});
-
-  describe("api/ng.directive:ngBindTemplate", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngBindTemplate");
-    });
-  
-      it('should check ng-bind', function() {
-        expect(using('.doc-example-live').binding('salutation')).
-          toBe('Hello');
-        expect(using('.doc-example-live').binding('name')).
-          toBe('World');
-        using('.doc-example-live').input('salutation').enter('Greetings');
-        using('.doc-example-live').input('name').enter('user');
-        expect(using('.doc-example-live').binding('salutation')).
-          toBe('Greetings');
-        expect(using('.doc-example-live').binding('name')).
-          toBe('user');
-      });
-
-});
-
-  describe("api/ng.directive:ngBindHtmlUnsafe", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngBindHtmlUnsafe");
-    });
-  
-});
-
-  describe("api/ng.directive:ngClass", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngClass");
-    });
-  
-    it('should check ng-class', function() {
-      expect(element('.doc-example-live span').prop('className')).not().
-        toMatch(/my-class/);
-    
-      using('.doc-example-live').element(':button:first').click();
-    
-      expect(element('.doc-example-live span').prop('className')).
-        toMatch(/my-class/);
-    
-      using('.doc-example-live').element(':button:last').click();
-    
-      expect(element('.doc-example-live span').prop('className')).not().
-        toMatch(/my-class/);
-    });
-
-});
-
-  describe("api/ng.directive:ngClassOdd", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngClassOdd");
-    });
-  
-    it('should check ng-class-odd and ng-class-even', function() {
-      expect(element('.doc-example-live li:first span').prop('className')).
-        toMatch(/odd/);
-      expect(element('.doc-example-live li:last span').prop('className')).
-        toMatch(/even/);
-    });
-
-});
-
-  describe("api/ng.directive:ngClassEven", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngClassEven");
-    });
-  
-    it('should check ng-class-odd and ng-class-even', function() {
-      expect(element('.doc-example-live li:first span').prop('className')).
-        toMatch(/odd/);
-      expect(element('.doc-example-live li:last span').prop('className')).
-        toMatch(/even/);
     });
 
 });
@@ -1381,6 +1291,96 @@ describe("angular+jqlite", function() {
 
 });
 
+  describe("api/ng.directive:ngBind", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngBind");
+    });
+  
+      it('should check ng-bind', function() {
+        expect(using('.doc-example-live').binding('name')).toBe('Whirled');
+        using('.doc-example-live').input('name').enter('world');
+        expect(using('.doc-example-live').binding('name')).toBe('world');
+      });
+
+});
+
+  describe("api/ng.directive:ngBindTemplate", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngBindTemplate");
+    });
+  
+      it('should check ng-bind', function() {
+        expect(using('.doc-example-live').binding('salutation')).
+          toBe('Hello');
+        expect(using('.doc-example-live').binding('name')).
+          toBe('World');
+        using('.doc-example-live').input('salutation').enter('Greetings');
+        using('.doc-example-live').input('name').enter('user');
+        expect(using('.doc-example-live').binding('salutation')).
+          toBe('Greetings');
+        expect(using('.doc-example-live').binding('name')).
+          toBe('user');
+      });
+
+});
+
+  describe("api/ng.directive:ngBindHtmlUnsafe", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngBindHtmlUnsafe");
+    });
+  
+});
+
+  describe("api/ng.directive:ngClass", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngClass");
+    });
+  
+    it('should check ng-class', function() {
+      expect(element('.doc-example-live span').prop('className')).not().
+        toMatch(/my-class/);
+    
+      using('.doc-example-live').element(':button:first').click();
+    
+      expect(element('.doc-example-live span').prop('className')).
+        toMatch(/my-class/);
+    
+      using('.doc-example-live').element(':button:last').click();
+    
+      expect(element('.doc-example-live span').prop('className')).not().
+        toMatch(/my-class/);
+    });
+
+});
+
+  describe("api/ng.directive:ngClassOdd", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngClassOdd");
+    });
+  
+    it('should check ng-class-odd and ng-class-even', function() {
+      expect(element('.doc-example-live li:first span').prop('className')).
+        toMatch(/odd/);
+      expect(element('.doc-example-live li:last span').prop('className')).
+        toMatch(/even/);
+    });
+
+});
+
+  describe("api/ng.directive:ngClassEven", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngClassEven");
+    });
+  
+    it('should check ng-class-odd and ng-class-even', function() {
+      expect(element('.doc-example-live li:first span').prop('className')).
+        toMatch(/odd/);
+      expect(element('.doc-example-live li:last span').prop('className')).
+        toMatch(/even/);
+    });
+
+});
+
   describe("api/ng.directive:ngCloak", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/api/ng.directive:ngCloak");
@@ -1400,6 +1400,21 @@ describe("angular+jqlite", function() {
       browser().navigateTo("index-nocache.html#!/api/ng.directive:ngController");
     });
   
+      it('should check controller', function() {
+        expect(element('.doc-example-live div>:input').val()).toBe('John Smith');
+        expect(element('.doc-example-live li:nth-child(1) input').val())
+          .toBe('408 555 1212');
+        expect(element('.doc-example-live li:nth-child(2) input').val())
+          .toBe('john.smith@example.org');
+    
+        element('.doc-example-live li:first a:contains("clear")').click();
+        expect(element('.doc-example-live li:first input').val()).toBe('');
+    
+        element('.doc-example-live li:last a:contains("add")').click();
+        expect(element('.doc-example-live li:nth-child(3) input').val())
+          .toBe('yourname@example.org');
+      });
+
       it('should check controller', function() {
         expect(element('.doc-example-live div>:input').val()).toBe('John Smith');
         expect(element('.doc-example-live li:nth-child(1) input').val())
@@ -1525,6 +1540,13 @@ describe("angular+jqlite", function() {
       expect(binding('list')).toBe('["hello"]');
     });
 
+});
+
+  describe("api/ng.directive:ngIf", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.directive:ngIf");
+    });
+  
 });
 
   describe("api/ng.directive:ngInclude", function() {
@@ -1970,6 +1992,13 @@ describe("angular+jqlite", function() {
   
 });
 
+  describe("api/ng.$httpBackend", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.$httpBackend");
+    });
+  
+});
+
   describe("api/ng.$http", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/api/ng.$http");
@@ -1997,13 +2026,6 @@ describe("angular+jqlite", function() {
       expect(binding('data')).toBe('Request failed');
     });
 
-});
-
-  describe("api/ng.$httpBackend", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.$httpBackend");
-    });
-  
 });
 
   describe("api/ng.$interpolateProvider", function() {
@@ -2069,9 +2091,23 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("api/ng.$rootElement", function() {
+  describe("api/ng.$rootScopeProvider", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.$rootElement");
+      browser().navigateTo("index-nocache.html#!/api/ng.$rootScopeProvider");
+    });
+  
+});
+
+  describe("api/ng.$rootScope", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.$rootScope");
+    });
+  
+});
+
+  describe("api/ng.$rootScope.Scope", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ng.$rootScope.Scope");
     });
   
 });
@@ -2104,27 +2140,6 @@ describe("angular+jqlite", function() {
 
 });
 
-  describe("api/ng.$rootScopeProvider", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.$rootScopeProvider");
-    });
-  
-});
-
-  describe("api/ng.$rootScope", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.$rootScope");
-    });
-  
-});
-
-  describe("api/ng.$rootScope.Scope", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ng.$rootScope.Scope");
-    });
-  
-});
-
   describe("api/ng.$routeParams", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/api/ng.$routeParams");
@@ -2144,7 +2159,11 @@ describe("angular+jqlite", function() {
       browser().navigateTo("index-nocache.html#!/api/ng.$window");
     });
   
-    
+    it('should display the greeting in the input box', function() {
+     input('greeting').enter('Hello, E2E Tests');
+     // If we click the button it will block the test runner
+     // element(':button').click();
+    });
 
 });
 
@@ -2169,9 +2188,16 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("api/ngMobile.directive:ngTap", function() {
+  describe("api/ng.$rootElement", function() {
     beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ngMobile.directive:ngTap");
+      browser().navigateTo("index-nocache.html#!/api/ng.$rootElement");
+    });
+  
+});
+
+  describe("api/ngMobile.directive:ngClick", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ngMobile.directive:ngClick");
     });
   
 });
@@ -2181,6 +2207,80 @@ describe("angular+jqlite", function() {
       browser().navigateTo("index-nocache.html#!/api/ngMobile");
     });
   
+});
+
+  describe("api/ngMobile.directive:ngSwipeLeft", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ngMobile.directive:ngSwipeLeft");
+    });
+  
+});
+
+  describe("api/ngMobile.directive:ngSwipeRight", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ngMobile.directive:ngSwipeRight");
+    });
+  
+});
+
+  describe("api/ngSanitize.directive:ngBindHtml", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ngSanitize.directive:ngBindHtml");
+    });
+  
+});
+
+  describe("api/ngResource", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ngResource");
+    });
+  
+});
+
+  describe("api/ngResource.$resource", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ngResource.$resource");
+    });
+  
+    
+
+});
+
+  describe("api/ngSanitize.filter:linky", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-nocache.html#!/api/ngSanitize.filter:linky");
+    });
+  
+    it('should linkify the snippet with urls', function() {
+      expect(using('#linky-filter').binding('snippet | linky')).
+        toBe('Pretty text with some links:&#10;' +
+             '<a href="http://angularjs.org/">http://angularjs.org/</a>,&#10;' +
+             '<a href="mailto:us@somewhere.org">us@somewhere.org</a>,&#10;' +
+             '<a href="mailto:another@somewhere.org">another@somewhere.org</a>,&#10;' +
+             'and one more: <a href="ftp://127.0.0.1/">ftp://127.0.0.1/</a>.');
+    });
+    
+    it ('should not linkify snippet without the linky filter', function() {
+      expect(using('#escaped-html').binding('snippet')).
+        toBe("Pretty text with some links:\n" +
+             "http://angularjs.org/,\n" +
+             "mailto:us@somewhere.org,\n" +
+             "another@somewhere.org,\n" +
+             "and one more: ftp://127.0.0.1/.");
+    });
+    
+    it('should update', function() {
+      input('snippet').enter('new http://link.');
+      expect(using('#linky-filter').binding('snippet | linky')).
+        toBe('new <a href="http://link">http://link</a>.');
+      expect(using('#escaped-html').binding('snippet')).toBe('new http://link.');
+    });
+    
+    it('should work with the target property', function() {
+     expect(using('#linky-target').binding("snippetWithTarget | linky:'_blank'")).
+       toBe('<a target="_blank" href="http://angularjs.org/">http://angularjs.org/</a>');
+    });
+
 });
 
   describe("api/angular.mock", function() {
@@ -2281,66 +2381,6 @@ describe("angular+jqlite", function() {
   
 });
 
-  describe("api/ngResource", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ngResource");
-    });
-  
-});
-
-  describe("api/ngResource.$resource", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ngResource.$resource");
-    });
-  
-    
-
-});
-
-  describe("api/ngSanitize.directive:ngBindHtml", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ngSanitize.directive:ngBindHtml");
-    });
-  
-});
-
-  describe("api/ngSanitize.filter:linky", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-nocache.html#!/api/ngSanitize.filter:linky");
-    });
-  
-    it('should linkify the snippet with urls', function() {
-      expect(using('#linky-filter').binding('snippet | linky')).
-        toBe('Pretty text with some links:&#10;' +
-             '<a href="http://angularjs.org/">http://angularjs.org/</a>,&#10;' +
-             '<a href="mailto:us@somewhere.org">us@somewhere.org</a>,&#10;' +
-             '<a href="mailto:another@somewhere.org">another@somewhere.org</a>,&#10;' +
-             'and one more: <a href="ftp://127.0.0.1/">ftp://127.0.0.1/</a>.');
-    });
-    
-    it ('should not linkify snippet without the linky filter', function() {
-      expect(using('#escaped-html').binding('snippet')).
-        toBe("Pretty text with some links:\n" +
-             "http://angularjs.org/,\n" +
-             "mailto:us@somewhere.org,\n" +
-             "another@somewhere.org,\n" +
-             "and one more: ftp://127.0.0.1/.");
-    });
-    
-    it('should update', function() {
-      input('snippet').enter('new http://link.');
-      expect(using('#linky-filter').binding('snippet | linky')).
-        toBe('new <a href="http://link">http://link</a>.');
-      expect(using('#escaped-html').binding('snippet')).toBe('new http://link.');
-    });
-    
-    it('should work with the target property', function() {
-     expect(using('#linky-target').binding("snippetWithTarget | linky:'_blank'")).
-       toBe('<a target="_blank" href="http://angularjs.org/">http://angularjs.org/</a>');
-    });
-
-});
-
   describe("api/ngSanitize", function() {
     beforeEach(function() {
       browser().navigateTo("index-nocache.html#!/api/ngSanitize");
@@ -2438,19 +2478,6 @@ describe("angular+jquery", function() {
 
 });
 
-  describe("cookbook/helloworld", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/cookbook/helloworld");
-    });
-  
-    it('should change the binding when user enters text', function() {
-      expect(binding('name')).toEqual('World');
-      input('name').enter('angular');
-      expect(binding('name')).toEqual('angular');
-    });
-
-});
-
   describe("cookbook/deeplinking", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/cookbook/deeplinking");
@@ -2466,6 +2493,42 @@ describe("angular+jquery", function() {
         expect(element('[ng-view]').text()).toMatch(/Hello yourname/);
       });
 
+});
+
+  describe("cookbook/mvc", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/cookbook/mvc");
+    });
+  
+      it('should play a game', function() {
+       piece(1, 1);
+       expect(binding('nextMove')).toEqual('O');
+       piece(3, 1);
+       expect(binding('nextMove')).toEqual('X');
+       piece(1, 2);
+       piece(3, 2);
+       piece(1, 3);
+       expect(element('.winner').text()).toEqual('Player X has won!');
+      });
+    
+      function piece(row, col) {
+        element('.board tr:nth-child('+row+') td:nth-child('+col+')').click();
+      }
+
+});
+
+  describe("guide/bootstrap", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/guide/bootstrap");
+    });
+  
+});
+
+  describe("guide/compiler", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/guide/compiler");
+    });
+  
 });
 
   describe("cookbook/form", function() {
@@ -2508,66 +2571,22 @@ describe("angular+jquery", function() {
 
 });
 
-  describe("guide/bootstrap", function() {
+  describe("cookbook/helloworld", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/bootstrap");
+      browser().navigateTo("index-jq-nocache.html#!/cookbook/helloworld");
     });
   
-});
-
-  describe("cookbook/index", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/cookbook/index");
+    it('should change the binding when user enters text', function() {
+      expect(binding('name')).toEqual('World');
+      input('name').enter('angular');
+      expect(binding('name')).toEqual('angular');
     });
-  
-});
 
-  describe("cookbook/mvc", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/cookbook/mvc");
-    });
-  
-      it('should play a game', function() {
-       piece(1, 1);
-       expect(binding('nextMove')).toEqual('O');
-       piece(3, 1);
-       expect(binding('nextMove')).toEqual('X');
-       piece(1, 2);
-       piece(3, 2);
-       piece(1, 3);
-       expect(element('.winner').text()).toEqual('Player X has won!');
-      });
-    
-      function piece(row, col) {
-        element('.board tr:nth-child('+row+') td:nth-child('+col+')').click();
-      }
-
-});
-
-  describe("guide/compiler", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/compiler");
-    });
-  
-});
-
-  describe("guide/dev_guide.mvc.understanding_controller", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.mvc.understanding_controller");
-    });
-  
 });
 
   describe("guide/concepts", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/guide/concepts");
-    });
-  
-});
-
-  describe("guide/dev_guide.mvc", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.mvc");
     });
   
 });
@@ -2579,9 +2598,37 @@ describe("angular+jquery", function() {
   
 });
 
+  describe("guide/dev_guide.mvc.understanding_controller", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.mvc.understanding_controller");
+    });
+  
+});
+
   describe("guide/dev_guide.mvc.understanding_model", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.mvc.understanding_model");
+    });
+  
+});
+
+  describe("guide/dev_guide.services.$location", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.services.$location");
+    });
+  
+});
+
+  describe("cookbook/index", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/cookbook/index");
+    });
+  
+});
+
+  describe("guide/dev_guide.mvc", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.mvc");
     });
   
 });
@@ -2609,13 +2656,6 @@ describe("angular+jquery", function() {
       expect(element(':input[ng\\:model="message"]').val()).toEqual('test');
     });
 
-});
-
-  describe("guide/dev_guide.services.$location", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.services.$location");
-    });
-  
 });
 
   describe("guide/dev_guide.services.managing_dependencies", function() {
@@ -2646,13 +2686,6 @@ describe("angular+jquery", function() {
   
 });
 
-  describe("guide/dev_guide.services.understanding_services", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.services.understanding_services");
-    });
-  
-});
-
   describe("guide/dev_guide.templates.css-styling", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.templates.css-styling");
@@ -2660,22 +2693,23 @@ describe("angular+jquery", function() {
   
 });
 
-  describe("guide/dev_guide.templates.filters.creating_filters", function() {
+  describe("guide/dev_guide.templates.filters.using_filters", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.templates.filters.creating_filters");
+      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.templates.filters.using_filters");
     });
   
-    it('should reverse greeting', function() {
-      expect(binding('greeting|reverse')).toEqual('olleh');
-      input('greeting').enter('ABC');
-      expect(binding('greeting|reverse')).toEqual('CBA');
-    });
-
 });
 
-  describe("guide/dev_guide.templates.filters", function() {
+  describe("guide/dev_guide.services.understanding_services", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.templates.filters");
+      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.services.understanding_services");
+    });
+  
+});
+
+  describe("guide/dev_guide.unit-testing", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.unit-testing");
     });
   
 });
@@ -2707,34 +2741,6 @@ describe("angular+jquery", function() {
         expect(element('.zippy').prop('className')).toMatch(/opened/);
       });
 
-});
-
-  describe("guide/dev_guide.templates.filters.using_filters", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.templates.filters.using_filters");
-    });
-  
-});
-
-  describe("guide/forms", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/forms");
-    });
-  
-});
-
-  describe("guide/dev_guide.templates", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.templates");
-    });
-  
-});
-
-  describe("guide/dev_guide.unit-testing", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.unit-testing");
-    });
-  
 });
 
   describe("guide/expression", function() {
@@ -2769,6 +2775,13 @@ describe("angular+jquery", function() {
 
 });
 
+  describe("guide/forms", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/guide/forms");
+    });
+  
+});
+
   describe("guide/i18n", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/guide/i18n");
@@ -2783,16 +2796,29 @@ describe("angular+jquery", function() {
   
 });
 
-  describe("guide/introduction", function() {
+  describe("guide/dev_guide.templates.filters.creating_filters", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/introduction");
+      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.templates.filters.creating_filters");
+    });
+  
+    it('should reverse greeting', function() {
+      expect(binding('greeting|reverse')).toEqual('olleh');
+      input('greeting').enter('ABC');
+      expect(binding('greeting|reverse')).toEqual('CBA');
+    });
+
+});
+
+  describe("guide/dev_guide.templates.filters", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.templates.filters");
     });
   
 });
 
-  describe("guide/index", function() {
+  describe("guide/dev_guide.templates", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/index");
+      browser().navigateTo("index-jq-nocache.html#!/guide/dev_guide.templates");
     });
   
 });
@@ -2800,20 +2826,6 @@ describe("angular+jquery", function() {
   describe("guide/module", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/guide/module");
-    });
-  
-});
-
-  describe("guide/type", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/guide/type");
-    });
-  
-});
-
-  describe("misc/downloading", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/misc/downloading");
     });
   
 });
@@ -2846,9 +2858,9 @@ describe("angular+jquery", function() {
   
 });
 
-  describe("misc/started", function() {
+  describe("misc/downloading", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/misc/started");
+      browser().navigateTo("index-jq-nocache.html#!/misc/downloading");
     });
   
 });
@@ -2867,16 +2879,16 @@ describe("angular+jquery", function() {
   
 });
 
-  describe("tutorial/step_00", function() {
+  describe("guide/index", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/tutorial/step_00");
+      browser().navigateTo("index-jq-nocache.html#!/guide/index");
     });
   
 });
 
-  describe("tutorial/step_01", function() {
+  describe("guide/introduction", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/tutorial/step_01");
+      browser().navigateTo("index-jq-nocache.html#!/guide/introduction");
     });
   
 });
@@ -2909,16 +2921,16 @@ describe("angular+jquery", function() {
   
 });
 
-  describe("tutorial/step_06", function() {
+  describe("misc/started", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/tutorial/step_06");
+      browser().navigateTo("index-jq-nocache.html#!/misc/started");
     });
   
 });
 
-  describe("tutorial/step_07", function() {
+  describe("tutorial/step_00", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/tutorial/step_07");
+      browser().navigateTo("index-jq-nocache.html#!/tutorial/step_00");
     });
   
 });
@@ -2937,16 +2949,9 @@ describe("angular+jquery", function() {
   
 });
 
-  describe("tutorial/the_end", function() {
+  describe("tutorial/step_01", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/tutorial/the_end");
-    });
-  
-});
-
-  describe("tutorial/step_10", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/tutorial/step_10");
+      browser().navigateTo("index-jq-nocache.html#!/tutorial/step_01");
     });
   
 });
@@ -2954,6 +2959,34 @@ describe("angular+jquery", function() {
   describe("tutorial/step_11", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/tutorial/step_11");
+    });
+  
+});
+
+  describe("tutorial/the_end", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/tutorial/the_end");
+    });
+  
+});
+
+  describe("tutorial/step_06", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/tutorial/step_06");
+    });
+  
+});
+
+  describe("tutorial/step_07", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/tutorial/step_07");
+    });
+  
+});
+
+  describe("tutorial/step_10", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/tutorial/step_10");
     });
   
 });
@@ -3161,6 +3194,13 @@ describe("angular+jquery", function() {
   
 });
 
+  describe("api/ng.$anchorScroll", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.$anchorScroll");
+    });
+  
+});
+
   describe("api/angular.Module", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/api/angular.Module");
@@ -3171,13 +3211,6 @@ describe("angular+jquery", function() {
   describe("api/angular.module", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/api/angular.module");
-    });
-  
-});
-
-  describe("api/ng.$anchorScroll", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.$anchorScroll");
     });
   
 });
@@ -3224,27 +3257,6 @@ describe("angular+jquery", function() {
   
 });
 
-  describe("api/ng.$controllerProvider", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.$controllerProvider");
-    });
-  
-});
-
-  describe("api/ng.$controller", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.$controller");
-    });
-  
-});
-
-  describe("api/ng.directive:a", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:a");
-    });
-  
-});
-
   describe("api/ng.$compile", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/api/ng.$compile");
@@ -3268,6 +3280,27 @@ describe("angular+jquery", function() {
   describe("api/ng.$compile.directive.Attributes", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/api/ng.$compile.directive.Attributes");
+    });
+  
+});
+
+  describe("api/ng.$controllerProvider", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.$controllerProvider");
+    });
+  
+});
+
+  describe("api/ng.$controller", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.$controller");
+    });
+  
+});
+
+  describe("api/ng.directive:a", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:a");
     });
   
 });
@@ -3321,6 +3354,13 @@ describe("angular+jquery", function() {
   describe("api/ng.directive:ngSrc", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngSrc");
+    });
+  
+});
+
+  describe("api/ng.directive:ngSrcset", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngSrcset");
     });
   
 });
@@ -3431,96 +3471,6 @@ describe("angular+jquery", function() {
      input('userType').enter('');
      expect(binding('userType')).toEqual('');
      expect(binding('myForm.input.$valid')).toEqual('false');
-    });
-
-});
-
-  describe("api/ng.directive:ngBind", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngBind");
-    });
-  
-      it('should check ng-bind', function() {
-        expect(using('.doc-example-live').binding('name')).toBe('Whirled');
-        using('.doc-example-live').input('name').enter('world');
-        expect(using('.doc-example-live').binding('name')).toBe('world');
-      });
-
-});
-
-  describe("api/ng.directive:ngBindTemplate", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngBindTemplate");
-    });
-  
-      it('should check ng-bind', function() {
-        expect(using('.doc-example-live').binding('salutation')).
-          toBe('Hello');
-        expect(using('.doc-example-live').binding('name')).
-          toBe('World');
-        using('.doc-example-live').input('salutation').enter('Greetings');
-        using('.doc-example-live').input('name').enter('user');
-        expect(using('.doc-example-live').binding('salutation')).
-          toBe('Greetings');
-        expect(using('.doc-example-live').binding('name')).
-          toBe('user');
-      });
-
-});
-
-  describe("api/ng.directive:ngBindHtmlUnsafe", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngBindHtmlUnsafe");
-    });
-  
-});
-
-  describe("api/ng.directive:ngClass", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngClass");
-    });
-  
-    it('should check ng-class', function() {
-      expect(element('.doc-example-live span').prop('className')).not().
-        toMatch(/my-class/);
-    
-      using('.doc-example-live').element(':button:first').click();
-    
-      expect(element('.doc-example-live span').prop('className')).
-        toMatch(/my-class/);
-    
-      using('.doc-example-live').element(':button:last').click();
-    
-      expect(element('.doc-example-live span').prop('className')).not().
-        toMatch(/my-class/);
-    });
-
-});
-
-  describe("api/ng.directive:ngClassOdd", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngClassOdd");
-    });
-  
-    it('should check ng-class-odd and ng-class-even', function() {
-      expect(element('.doc-example-live li:first span').prop('className')).
-        toMatch(/odd/);
-      expect(element('.doc-example-live li:last span').prop('className')).
-        toMatch(/even/);
-    });
-
-});
-
-  describe("api/ng.directive:ngClassEven", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngClassEven");
-    });
-  
-    it('should check ng-class-odd and ng-class-even', function() {
-      expect(element('.doc-example-live li:first span').prop('className')).
-        toMatch(/odd/);
-      expect(element('.doc-example-live li:last span').prop('className')).
-        toMatch(/even/);
     });
 
 });
@@ -3767,6 +3717,96 @@ describe("angular+jquery", function() {
 
 });
 
+  describe("api/ng.directive:ngBind", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngBind");
+    });
+  
+      it('should check ng-bind', function() {
+        expect(using('.doc-example-live').binding('name')).toBe('Whirled');
+        using('.doc-example-live').input('name').enter('world');
+        expect(using('.doc-example-live').binding('name')).toBe('world');
+      });
+
+});
+
+  describe("api/ng.directive:ngBindTemplate", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngBindTemplate");
+    });
+  
+      it('should check ng-bind', function() {
+        expect(using('.doc-example-live').binding('salutation')).
+          toBe('Hello');
+        expect(using('.doc-example-live').binding('name')).
+          toBe('World');
+        using('.doc-example-live').input('salutation').enter('Greetings');
+        using('.doc-example-live').input('name').enter('user');
+        expect(using('.doc-example-live').binding('salutation')).
+          toBe('Greetings');
+        expect(using('.doc-example-live').binding('name')).
+          toBe('user');
+      });
+
+});
+
+  describe("api/ng.directive:ngBindHtmlUnsafe", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngBindHtmlUnsafe");
+    });
+  
+});
+
+  describe("api/ng.directive:ngClass", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngClass");
+    });
+  
+    it('should check ng-class', function() {
+      expect(element('.doc-example-live span').prop('className')).not().
+        toMatch(/my-class/);
+    
+      using('.doc-example-live').element(':button:first').click();
+    
+      expect(element('.doc-example-live span').prop('className')).
+        toMatch(/my-class/);
+    
+      using('.doc-example-live').element(':button:last').click();
+    
+      expect(element('.doc-example-live span').prop('className')).not().
+        toMatch(/my-class/);
+    });
+
+});
+
+  describe("api/ng.directive:ngClassOdd", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngClassOdd");
+    });
+  
+    it('should check ng-class-odd and ng-class-even', function() {
+      expect(element('.doc-example-live li:first span').prop('className')).
+        toMatch(/odd/);
+      expect(element('.doc-example-live li:last span').prop('className')).
+        toMatch(/even/);
+    });
+
+});
+
+  describe("api/ng.directive:ngClassEven", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngClassEven");
+    });
+  
+    it('should check ng-class-odd and ng-class-even', function() {
+      expect(element('.doc-example-live li:first span').prop('className')).
+        toMatch(/odd/);
+      expect(element('.doc-example-live li:last span').prop('className')).
+        toMatch(/even/);
+    });
+
+});
+
   describe("api/ng.directive:ngCloak", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngCloak");
@@ -3786,6 +3826,21 @@ describe("angular+jquery", function() {
       browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngController");
     });
   
+      it('should check controller', function() {
+        expect(element('.doc-example-live div>:input').val()).toBe('John Smith');
+        expect(element('.doc-example-live li:nth-child(1) input').val())
+          .toBe('408 555 1212');
+        expect(element('.doc-example-live li:nth-child(2) input').val())
+          .toBe('john.smith@example.org');
+    
+        element('.doc-example-live li:first a:contains("clear")').click();
+        expect(element('.doc-example-live li:first input').val()).toBe('');
+    
+        element('.doc-example-live li:last a:contains("add")').click();
+        expect(element('.doc-example-live li:nth-child(3) input').val())
+          .toBe('yourname@example.org');
+      });
+
       it('should check controller', function() {
         expect(element('.doc-example-live div>:input').val()).toBe('John Smith');
         expect(element('.doc-example-live li:nth-child(1) input').val())
@@ -3911,6 +3966,13 @@ describe("angular+jquery", function() {
       expect(binding('list')).toBe('["hello"]');
     });
 
+});
+
+  describe("api/ng.directive:ngIf", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.directive:ngIf");
+    });
+  
 });
 
   describe("api/ng.directive:ngInclude", function() {
@@ -4356,6 +4418,13 @@ describe("angular+jquery", function() {
   
 });
 
+  describe("api/ng.$httpBackend", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.$httpBackend");
+    });
+  
+});
+
   describe("api/ng.$http", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/api/ng.$http");
@@ -4383,13 +4452,6 @@ describe("angular+jquery", function() {
       expect(binding('data')).toBe('Request failed');
     });
 
-});
-
-  describe("api/ng.$httpBackend", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.$httpBackend");
-    });
-  
 });
 
   describe("api/ng.$interpolateProvider", function() {
@@ -4455,9 +4517,23 @@ describe("angular+jquery", function() {
   
 });
 
-  describe("api/ng.$rootElement", function() {
+  describe("api/ng.$rootScopeProvider", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.$rootElement");
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.$rootScopeProvider");
+    });
+  
+});
+
+  describe("api/ng.$rootScope", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.$rootScope");
+    });
+  
+});
+
+  describe("api/ng.$rootScope.Scope", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.$rootScope.Scope");
     });
   
 });
@@ -4490,27 +4566,6 @@ describe("angular+jquery", function() {
 
 });
 
-  describe("api/ng.$rootScopeProvider", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.$rootScopeProvider");
-    });
-  
-});
-
-  describe("api/ng.$rootScope", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.$rootScope");
-    });
-  
-});
-
-  describe("api/ng.$rootScope.Scope", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ng.$rootScope.Scope");
-    });
-  
-});
-
   describe("api/ng.$routeParams", function() {
     beforeEach(function() {
       browser().navigateTo("index-jq-nocache.html#!/api/ng.$routeParams");
@@ -4530,7 +4585,11 @@ describe("angular+jquery", function() {
       browser().navigateTo("index-jq-nocache.html#!/api/ng.$window");
     });
   
-    
+    it('should display the greeting in the input box', function() {
+     input('greeting').enter('Hello, E2E Tests');
+     // If we click the button it will block the test runner
+     // element(':button').click();
+    });
 
 });
 
@@ -4555,9 +4614,16 @@ describe("angular+jquery", function() {
   
 });
 
-  describe("api/ngMobile.directive:ngTap", function() {
+  describe("api/ng.$rootElement", function() {
     beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ngMobile.directive:ngTap");
+      browser().navigateTo("index-jq-nocache.html#!/api/ng.$rootElement");
+    });
+  
+});
+
+  describe("api/ngMobile.directive:ngClick", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ngMobile.directive:ngClick");
     });
   
 });
@@ -4567,6 +4633,80 @@ describe("angular+jquery", function() {
       browser().navigateTo("index-jq-nocache.html#!/api/ngMobile");
     });
   
+});
+
+  describe("api/ngMobile.directive:ngSwipeLeft", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ngMobile.directive:ngSwipeLeft");
+    });
+  
+});
+
+  describe("api/ngMobile.directive:ngSwipeRight", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ngMobile.directive:ngSwipeRight");
+    });
+  
+});
+
+  describe("api/ngSanitize.directive:ngBindHtml", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ngSanitize.directive:ngBindHtml");
+    });
+  
+});
+
+  describe("api/ngResource", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ngResource");
+    });
+  
+});
+
+  describe("api/ngResource.$resource", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ngResource.$resource");
+    });
+  
+    
+
+});
+
+  describe("api/ngSanitize.filter:linky", function() {
+    beforeEach(function() {
+      browser().navigateTo("index-jq-nocache.html#!/api/ngSanitize.filter:linky");
+    });
+  
+    it('should linkify the snippet with urls', function() {
+      expect(using('#linky-filter').binding('snippet | linky')).
+        toBe('Pretty text with some links:&#10;' +
+             '<a href="http://angularjs.org/">http://angularjs.org/</a>,&#10;' +
+             '<a href="mailto:us@somewhere.org">us@somewhere.org</a>,&#10;' +
+             '<a href="mailto:another@somewhere.org">another@somewhere.org</a>,&#10;' +
+             'and one more: <a href="ftp://127.0.0.1/">ftp://127.0.0.1/</a>.');
+    });
+    
+    it ('should not linkify snippet without the linky filter', function() {
+      expect(using('#escaped-html').binding('snippet')).
+        toBe("Pretty text with some links:\n" +
+             "http://angularjs.org/,\n" +
+             "mailto:us@somewhere.org,\n" +
+             "another@somewhere.org,\n" +
+             "and one more: ftp://127.0.0.1/.");
+    });
+    
+    it('should update', function() {
+      input('snippet').enter('new http://link.');
+      expect(using('#linky-filter').binding('snippet | linky')).
+        toBe('new <a href="http://link">http://link</a>.');
+      expect(using('#escaped-html').binding('snippet')).toBe('new http://link.');
+    });
+    
+    it('should work with the target property', function() {
+     expect(using('#linky-target').binding("snippetWithTarget | linky:'_blank'")).
+       toBe('<a target="_blank" href="http://angularjs.org/">http://angularjs.org/</a>');
+    });
+
 });
 
   describe("api/angular.mock", function() {
@@ -4665,66 +4805,6 @@ describe("angular+jquery", function() {
       browser().navigateTo("index-jq-nocache.html#!/api/angular.mock.inject");
     });
   
-});
-
-  describe("api/ngResource", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ngResource");
-    });
-  
-});
-
-  describe("api/ngResource.$resource", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ngResource.$resource");
-    });
-  
-    
-
-});
-
-  describe("api/ngSanitize.directive:ngBindHtml", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ngSanitize.directive:ngBindHtml");
-    });
-  
-});
-
-  describe("api/ngSanitize.filter:linky", function() {
-    beforeEach(function() {
-      browser().navigateTo("index-jq-nocache.html#!/api/ngSanitize.filter:linky");
-    });
-  
-    it('should linkify the snippet with urls', function() {
-      expect(using('#linky-filter').binding('snippet | linky')).
-        toBe('Pretty text with some links:&#10;' +
-             '<a href="http://angularjs.org/">http://angularjs.org/</a>,&#10;' +
-             '<a href="mailto:us@somewhere.org">us@somewhere.org</a>,&#10;' +
-             '<a href="mailto:another@somewhere.org">another@somewhere.org</a>,&#10;' +
-             'and one more: <a href="ftp://127.0.0.1/">ftp://127.0.0.1/</a>.');
-    });
-    
-    it ('should not linkify snippet without the linky filter', function() {
-      expect(using('#escaped-html').binding('snippet')).
-        toBe("Pretty text with some links:\n" +
-             "http://angularjs.org/,\n" +
-             "mailto:us@somewhere.org,\n" +
-             "another@somewhere.org,\n" +
-             "and one more: ftp://127.0.0.1/.");
-    });
-    
-    it('should update', function() {
-      input('snippet').enter('new http://link.');
-      expect(using('#linky-filter').binding('snippet | linky')).
-        toBe('new <a href="http://link">http://link</a>.');
-      expect(using('#escaped-html').binding('snippet')).toBe('new http://link.');
-    });
-    
-    it('should work with the target property', function() {
-     expect(using('#linky-target').binding("snippetWithTarget | linky:'_blank'")).
-       toBe('<a target="_blank" href="http://angularjs.org/">http://angularjs.org/</a>');
-    });
-
 });
 
   describe("api/ngSanitize", function() {
