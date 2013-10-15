@@ -47,13 +47,14 @@ show this data in the phone detail view.</p>
 the same way as the phone list controller.</p>
 <p><strong><code>app/js/controllers.js</code>:</strong>
 <pre class="prettyprint linenums">
-function PhoneDetailCtrl($scope, $routeParams, $http) {
-  $http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
-    $scope.phone = data;
-  });
-}
+var phonecatControllers = angular.module('phonecatControllers',[]);
 
-//PhoneDetailCtrl.$inject = ['$scope', '$routeParams', '$http'];
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
+    $http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
+      $scope.phone = data;
+    });
+  }]);
 </pre>
 <p>To construct the URL for the HTTP request, we use <code>$routeParams.phoneId</code> extracted from the current
 route by the <code>$route</code> service.</p>
@@ -110,7 +111,7 @@ step 5.</p>
 
       $routeParams.phoneId = 'xyz';
       scope = $rootScope.$new();
-      ctrl = $controller(PhoneDetailCtrl, {$scope: scope});
+      ctrl = $controller('PhoneDetailCtrl', {$scope: scope});
     }));
 
 

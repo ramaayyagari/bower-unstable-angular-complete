@@ -18,18 +18,19 @@ clicking on the desired thumbnail image. Let&#39;s have a look at how we can do 
 <p><strong><code>app/js/controllers.js</code>:</strong>
 <pre class="prettyprint linenums">
 ...
-function PhoneDetailCtrl($scope, $routeParams, $http) {
-  $http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
-    $scope.phone = data;
-    $scope.mainImageUrl = data.images[0];
-  });
+var phonecatControllers = angular.module('phonecatControllers',[]);
 
-  $scope.setImage = function(imageUrl) {
-    $scope.mainImageUrl = imageUrl;
-  }
-}
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
+    $http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
+      $scope.phone = data;
+      $scope.mainImageUrl = data.images[0];
+    });
 
-//PhoneDetailCtrl.$inject = ['$scope', '$routeParams', '$http'];
+    $scope.setImage = function(imageUrl) {
+      $scope.mainImageUrl = imageUrl;
+    }
+  }]);
 </pre>
 <p>In the <code>PhoneDetailCtrl</code> controller, we created the <code>mainImageUrl</code> model property and set its
 default value to the first phone image URL.</p>
@@ -85,7 +86,7 @@ verifies that the main image changed appropriately.</p>
 });
 </pre>
 <p>You can now rerun <code>./scripts/e2e-test.sh</code> or refresh the browser tab with the end-to-end test
-runner to see the tests run, or you can see them running on <a href="http://angular.github.com/angular-phonecat/step-8/test/e2e/runner.html">Angular&#39;s server</a>.</p>
+runner to see the tests run, or you can see them running on <a href="http://angular.github.com/angular-phonecat/step-10/test/e2e/runner.html">Angular&#39;s server</a>.</p>
 <h2>Experiments</h1>
 <ul>
 <li><p>Let&#39;s add a new controller method to <code>PhoneDetailCtrl</code>:</p>
@@ -109,6 +110,6 @@ template remains operational.
 
 
 <h1>Summary</h2>
-<p>With the phone image swapper in place, we&#39;re ready for <a href="tutorial/step_11">step 11</a> (the last step!) to
+<p>With the phone image swapper in place, we&#39;re ready for <a href="tutorial/step_11">step 11</a> to
 learn an even better way to fetch data.</p>
 <ul doc-tutorial-nav="10"></ul></div></div>

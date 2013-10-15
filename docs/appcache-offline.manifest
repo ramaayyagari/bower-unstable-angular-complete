@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 2013-09-04T12:51:17.228Z
+# 2013-10-14T17:37:39.090Z
 
 # cache all of these
 CACHE:
@@ -131,12 +131,14 @@ partials/api/ng.$http.html
 partials/api/ng.$httpBackend.html
 partials/api/ng.$interpolate.html
 partials/api/ng.$interpolateProvider.html
+partials/api/ng.$interval.html
 partials/api/ng.$locale.html
 partials/api/ng.$location.html
 partials/api/ng.$locationProvider.html
 partials/api/ng.$log.html
 partials/api/ng.$logProvider.html
 partials/api/ng.$parse.html
+partials/api/ng.$parseProvider.html
 partials/api/ng.$q.html
 partials/api/ng.$rootElement.html
 partials/api/ng.$rootScope.Scope.html
@@ -172,7 +174,9 @@ partials/api/ng.directive:ngClassOdd.html
 partials/api/ng.directive:ngClick.html
 partials/api/ng.directive:ngCloak.html
 partials/api/ng.directive:ngController.html
+partials/api/ng.directive:ngCopy.html
 partials/api/ng.directive:ngCsp.html
+partials/api/ng.directive:ngCut.html
 partials/api/ng.directive:ngDblclick.html
 partials/api/ng.directive:ngDisabled.html
 partials/api/ng.directive:ngFocus.html
@@ -196,6 +200,7 @@ partials/api/ng.directive:ngMouseover.html
 partials/api/ng.directive:ngMouseup.html
 partials/api/ng.directive:ngNonBindable.html
 partials/api/ng.directive:ngOpen.html
+partials/api/ng.directive:ngPaste.html
 partials/api/ng.directive:ngPluralize.html
 partials/api/ng.directive:ngReadonly.html
 partials/api/ng.directive:ngRepeat.html
@@ -207,6 +212,7 @@ partials/api/ng.directive:ngStyle.html
 partials/api/ng.directive:ngSubmit.html
 partials/api/ng.directive:ngSwitch.html
 partials/api/ng.directive:ngTransclude.html
+partials/api/ng.directive:ngValue.html
 partials/api/ng.directive:script.html
 partials/api/ng.directive:select.html
 partials/api/ng.directive:textarea.html
@@ -229,6 +235,7 @@ partials/api/ngCookies.html
 partials/api/ngMock.$exceptionHandler.html
 partials/api/ngMock.$exceptionHandlerProvider.html
 partials/api/ngMock.$httpBackend.html
+partials/api/ngMock.$interval.html
 partials/api/ngMock.$log.html
 partials/api/ngMock.$timeout.html
 partials/api/ngMock.html
@@ -280,26 +287,32 @@ partials/error/$interpolate:noconcat.html
 partials/error/$location:ihshprfx.html
 partials/error/$location:ipthprfx.html
 partials/error/$location:isrcharg.html
+partials/error/$parse:isecdom.html
 partials/error/$parse:isecfld.html
 partials/error/$parse:isecfn.html
+partials/error/$parse:isecwindow.html
 partials/error/$parse:lexerr.html
 partials/error/$parse:syntax.html
 partials/error/$parse:ueoe.html
 partials/error/$resource:badargs.html
 partials/error/$resource:badcfg.html
+partials/error/$resource:badname.html
 partials/error/$rootScope:infdig.html
 partials/error/$rootScope:inprog.html
 partials/error/$sanitize:badparse.html
 partials/error/$sce:icontext.html
 partials/error/$sce:iequirks.html
+partials/error/$sce:imatcher.html
 partials/error/$sce:insecurl.html
 partials/error/$sce:itype.html
+partials/error/$sce:iwcard.html
 partials/error/$sce:unsafe.html
 partials/error/index.html
 partials/error/jqLite:nosel.html
 partials/error/jqLite:offargs.html
 partials/error/jqLite:onargs.html
 partials/error/ng:areq.html
+partials/error/ng:badname.html
 partials/error/ng:btstrpd.html
 partials/error/ng:cpi.html
 partials/error/ng:cpws.html
@@ -309,6 +322,8 @@ partials/error/ngPattern:noregexp.html
 partials/error/ngRepeat:dupes.html
 partials/error/ngRepeat:iexp.html
 partials/error/ngRepeat:iidexp.html
+partials/error/ngTransclude:orphan.html
+partials/guide/animations.html
 partials/guide/bootstrap.html
 partials/guide/compiler.html
 partials/guide/concepts.html
@@ -359,6 +374,7 @@ partials/tutorial/step_08.html
 partials/tutorial/step_09.html
 partials/tutorial/step_10.html
 partials/tutorial/step_11.html
+partials/tutorial/step_12.html
 partials/tutorial/the_end.html
 
 FALLBACK:

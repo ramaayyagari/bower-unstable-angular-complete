@@ -33,18 +33,18 @@ particular locale. You can find a list of currently supported locales <a href="h
 locale-specific file to the end of <code>angular.js</code> or <code>angular.min.js</code> file.</p>
 <p>For example on *nix, to create an angular.js file that contains localization rules for german
 locale, you can do the following:</p>
-<p><code>cat angular.js i18n/angular-locale_de-ge.js &gt; angular_de-ge.js</code></p>
-<p>When the application containing <code>angular_de-ge.js</code> script instead of the generic angular.js script
+<p><code>cat angular.js i18n/angular-locale_de-de.js &gt; angular_de-de.js</code></p>
+<p>When the application containing <code>angular_de-de.js</code> script instead of the generic angular.js script
 starts, Angular is automatically pre-configured with localization rules for the german locale.</p>
 <p><strong>2. Including locale js script in index.html page</strong></p>
 <p>You can also include the locale specific js file in the index.html page. For example, if one client
-requires German locale, you would serve index_de-ge.html which will look something like this:</p>
+requires German locale, you would serve index_de-de.html which will look something like this:</p>
 <pre class="prettyprint linenums">
 &lt;html ng-app&gt;
  &lt;head&gt;
 ….
    &lt;script src="angular.js"&gt;&lt;/script&gt;
-   &lt;script src="i18n/angular-locale_de-ge.js"&gt;&lt;/script&gt;
+   &lt;script src="i18n/angular-locale_de-de.js"&gt;&lt;/script&gt;
 ….
  &lt;/head&gt;
 &lt;/html&gt;

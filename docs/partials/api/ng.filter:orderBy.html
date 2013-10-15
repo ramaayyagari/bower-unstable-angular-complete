@@ -1,4 +1,4 @@
-<a href="http://github.com/angular/angular.js/tree/v1.2.0rc1/src/ng/filter/orderBy.js#L3" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ng/filter/orderBy.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">orderBy</code>
+<a href="http://github.com/angular/angular.js/tree/v1.2.0-rc.2/src/ng/filter/orderBy.js#L3" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ng/filter/orderBy.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">orderBy</code>
 <div><span class="hint">filter in module <code ng:non-bindable="">ng</code>
 </span>
 </div>
@@ -28,10 +28,10 @@ is used for sorting, but when two items are equivalent, the next predicate is us
 </div></td></tr></table></div>
 <h2 id="Example">Example</h2>
 <div class="example"><div class="ng-filter-page ng-filter-orderby-page"><h4>Source</h2>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-124" source-edit-css="" source-edit-js="script.js-123" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-125"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-135" source-edit-css="" source-edit-js="script.js-134" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-136"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-124" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-124">
+<pre class="prettyprint linenums" ng-set-text="index.html-135" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-135">
   
   <div ng-controller="Ctrl">
     <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
@@ -40,7 +40,7 @@ is used for sorting, but when two items are equivalent, the next predicate is us
     <table class="friend">
       <tr>
         <th><a href="" ng-click="predicate = 'name'; reverse=false">Name</a>
-            (<a href ng-click="predicate = '-name'; reverse=false">^</a>)</th>
+            (<a href="" ng-click="predicate = '-name'; reverse=false">^</a>)</th>
         <th><a href="" ng-click="predicate = 'phone'; reverse=!reverse">Phone Number</a></th>
         <th><a href="" ng-click="predicate = 'age'; reverse=!reverse">Age</a></th>
       </tr>
@@ -54,8 +54,8 @@ is used for sorting, but when two items are equivalent, the next predicate is us
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-123"></pre>
-<script type="text/ng-template" id="script.js-123">
+<pre class="prettyprint linenums" ng-set-text="script.js-134"></pre>
+<script type="text/ng-template" id="script.js-134">
     function Ctrl($scope) {
       $scope.friends =
           [{name:'John', phone:'555-1212', age:10},
@@ -68,8 +68,8 @@ is used for sorting, but when two items are equivalent, the next predicate is us
   </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-125"></pre>
-<script type="text/ng-template" id="scenario.js-125">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-136"></pre>
+<script type="text/ng-template" id="scenario.js-136">
   it('should be reverse ordered by aged', function() {
     expect(binding('predicate')).toBe('-age');
     expect(repeater('table.friend', 'friend in friends').column('friend.age')).
@@ -94,6 +94,6 @@ is used for sorting, but when two items are equivalent, the next predicate is us
 </script>
 </div>
 </div><h2>Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-124" ng-eval-javascript="script.js-123"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-135" ng-eval-javascript="script.js-134"></div>
 </div></div>
 </div>

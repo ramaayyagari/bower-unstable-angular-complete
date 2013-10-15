@@ -62,10 +62,10 @@ concepts which the application developer may face:</p>
 <li>formatting output in a user specific locale.</li>
 </ul>
 <h2>Source</h2>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-239" source-edit-css="" source-edit-js="script.js-238" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-240"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-258" source-edit-css="" source-edit-js="script.js-257" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-259"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-239" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-239">
+<pre class="prettyprint linenums" ng-set-text="index.html-258" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-258">
     <div ng-controller="InvoiceCntl">
       <b>Invoice:</b>
       <br>
@@ -83,8 +83,8 @@ concepts which the application developer may face:</p>
   </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-238"></pre>
-<script type="text/ng-template" id="script.js-238">
+<pre class="prettyprint linenums" ng-set-text="script.js-257"></pre>
+<script type="text/ng-template" id="script.js-257">
     function InvoiceCntl($scope) {
       $scope.qty = 1;
       $scope.cost = 19.95;
@@ -92,9 +92,9 @@ concepts which the application developer may face:</p>
   </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-240"></pre>
-<script type="text/ng-template" id="scenario.js-240">
-    it('should show of angular binding', function() {
+<pre class="prettyprint linenums" ng-set-text="scenario.js-259"></pre>
+<script type="text/ng-template" id="scenario.js-259">
+    it('should show off angular binding', function() {
       expect(binding('qty * cost')).toEqual('$19.95');
       input('qty').enter('2');
       input('cost').enter('5.00');
@@ -103,7 +103,7 @@ concepts which the application developer may face:</p>
   </script>
 </div>
 </div><h2>Demo</h3>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-239" ng-eval-javascript="script.js-238"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-258" ng-eval-javascript="script.js-257"></div>
 <p>Try out the Live Preview above, and then let&#39;s walk through the example and describe what&#39;s going
 on.</p>
 <p>In the <code>&lt;html&gt;</code> tag, we specify that it is an Angular
@@ -135,7 +135,7 @@ got from the input widgets to the display, multiply them together, and format th
 into output that looks like money.&quot;</p>
 <p>Notice that we achieved this application behavior not by calling Angular methods, nor by
 implementing application specific behavior as a framework. We achieved the behavior because the
-browser behaved more in line with what is needed for a dynamic web application rather then what is
+browser behaved more in line with what is needed for a dynamic web application rather than what is
 needed for a static document. Angular has lowered the impedance mismatch to the point where no
 library/framework calls are needed.</p>
 <h1>The Zen of Angular</h1>

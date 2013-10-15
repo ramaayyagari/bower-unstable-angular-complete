@@ -1,4 +1,4 @@
-<a href="http://github.com/angular/angular.js/tree/v1.2.0rc1/src/ngRoute/route.js#L19" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ngRoute/route.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">$routeProvider</code>
+<a href="http://github.com/angular/angular.js/tree/v1.2.0-rc.2/src/ngRoute/route.js#L19" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ngRoute/route.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">$routeProvider</code>
 <div><span class="hint">service in module <code ng:non-bindable="">ngRoute</code>
 </span>
 </div>
@@ -88,8 +88,8 @@ to access the new route parameters, instead.</li>
 <p>The custom <code>redirectTo</code> function is expected to return a string which will be used
 to update <code>$location.path()</code> and <code>$location.search()</code>.</p>
 </li>
-<li><p><code>[reloadOnSearch=true]</code> - {boolean=} - reload route when only $location.search()
-changes.</p>
+<li><p><code>[reloadOnSearch=true]</code> - {boolean=} - reload route when only <code>$location.search()</code>
+or <code>$location.hash()</code> changes.</p>
 <p>If the option is set to <code>false</code> and url in the browser changes, then
 <code>$routeUpdate</code> event is broadcasted on the root scope.</p>
 </li>

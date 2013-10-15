@@ -32,9 +32,9 @@ it('should filter results', function() {
 });
 </pre>
 This scenario describes the requirements of a Buzz Client, specifically, that it should be able to
-filter the stream of the user. It starts by entering a value in the &#39;user&#39; input field, clicking
+filter the stream of the user. It starts by entering a value in the input field with ng-model=&quot;user&quot;, clicking
 the only button on the page, and then it verifies that there are 10 items listed. It then enters
-&#39;Bees&#39; in the &#39;filterText&#39; input field and verifies that the list is reduced to a single item.</p>
+&#39;Bees&#39; in the input field with ng-model=&#39;filterText&#39;  and verifies that the list is reduced to a single item.</p>
 <p>The API section below lists the available commands and expectations for the Runner.</p>
 <h1>API</h1>
 <p>Source: <a href="https://github.com/angular/angular.js/blob/master/src/ngScenario/dsl.js"><a href="https://github.com/angular/angular.js/blob/master/src/ngScenario/dsl.js">https://github.com/angular/angular.js/blob/master/src/ngScenario/dsl.js</a></a></p>
@@ -101,9 +101,9 @@ given jQuery <code>selector</code>. The <code>label</code> is used for test outp
 <p>Returns an array with the values in the column with the given <code>binding</code> in the repeater matching
 the given jQuery <code>selector</code>. The <code>label</code> is used for test output.</p>
 <h2>select(name).option(value)</h2>
-<p>Picks the option with the given <code>value</code> on the select with the given <code>name</code>.</p>
+<p>Picks the option with the given <code>value</code> on the select with the given ng-model <code>name</code>.</p>
 <h2>select(name).options(value1, value2...)</h2>
-<p>Picks the options with the given <code>values</code> on the multi select with the given <code>name</code>.</p>
+<p>Picks the options with the given <code>values</code> on the multi select with the given ng-model <code>name</code>.</p>
 <h2>element(selector, label).count()</h2>
 <p>Returns the number of elements that match the given jQuery <code>selector</code>. The <code>label</code> is used for test
 output.</p>
@@ -224,7 +224,7 @@ beforeEach(function () {
 </pre>
 <p>In order to understand what is happening, we should emphasize that ngScenario calls are not
 immediately executed, but queued (in ngScenario terms, we would be talking about adding
-future actions). If we had only one entry in our table, than the following future actions
+future actions). If we had only one entry in our table, then the following future actions
 would be queued:</p>
 <pre class="prettyprint linenums">
 // delete entry 1

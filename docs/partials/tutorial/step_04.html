@@ -36,14 +36,14 @@ users to control the order in which the phones are listed.</p>
 </pre>
 <p>We made the following changes to the <code>index.html</code> template:</p>
 <ul>
-<li><p>First, we added a <code>&lt;select&gt;</code> html element named <code>orderProp</code>, so that our users can pick from the
-two provided sorting options.</p>
-<pre><code>&lt;img  class=&quot;diagram&quot; src=&quot;img/tutorial/tutorial_04.png&quot;&gt;</code></pre>
-</li>
-<li><p>We then chained the <code>filter</code> filter with <a href="api/ng.filter:orderBy"><code><code>orderBy</code></code></a>
+<li>First, we added a <code>&lt;select&gt;</code> html element named <code>orderProp</code>, so that our users can pick from the
+two provided sorting options.</li>
+</ul>
+<p><img class="diagram" src="img/tutorial/tutorial_04.png"></p>
+<ul>
+<li>We then chained the <code>filter</code> filter with <a href="api/ng.filter:orderBy"><code><code>orderBy</code></code></a>
 filter to further process the input into the repeater. <code>orderBy</code> is a filter that takes an input
-array, copies it and reorders the copy which is then returned.</p>
-</li>
+array, copies it and reorders the copy which is then returned.</li>
 </ul>
 <p>Angular creates a two way data-binding between the select element and the <code>orderProp</code> model.
 <code>orderProp</code> is then used as the input for the <code>orderBy</code> filter.</p>
@@ -54,21 +54,23 @@ necessary!</p>
 <h2>Controller</h2>
 <p><strong><code>app/js/controllers.js</code>:</strong>
 <pre class="prettyprint linenums">
-function PhoneListCtrl($scope) {
+var phonecatApp = angular.module('phonecatApp', []);
+
+phonecatApp.controller('PhoneListCtrl', function PhoneListCtrl($scope) {
   $scope.phones = [
-    {"name": "Nexus S",
-     "snippet": "Fast just got faster with Nexus S.",
-     "age": 0},
-    {"name": "Motorola XOOM™ with Wi-Fi",
-     "snippet": "The Next, Next Generation tablet.",
-     "age": 1},
-    {"name": "MOTOROLA XOOM™",
-     "snippet": "The Next, Next Generation tablet.",
-     "age": 2}
+    {'name': 'Nexus S',
+     'snippet': 'Fast just got faster with Nexus S.',
+     'age': 1},
+    {'name': 'Motorola XOOM™ with Wi-Fi',
+     'snippet': 'The Next, Next Generation tablet.',
+     'age': 2},
+    {'name': 'MOTOROLA XOOM™',
+     'snippet': 'The Next, Next Generation tablet.',
+     'age': 3}
   ];
 
   $scope.orderProp = 'age';
-}
+});
 </pre>
 <ul>
 <li><p>We modified the <code>phones</code> model - the array of phones - and added an <code>age</code> property to each phone

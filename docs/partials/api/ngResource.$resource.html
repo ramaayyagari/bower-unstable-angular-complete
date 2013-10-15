@@ -1,4 +1,4 @@
-<a href="http://github.com/angular/angular.js/tree/v1.2.0rc1/src/ngResource/resource.js#L21" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ngResource/resource.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">$resource</code>
+<a href="http://github.com/angular/angular.js/tree/v1.2.0-rc.2/src/ngResource/resource.js#L21" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ngResource/resource.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">$resource</code>
 <div><span class="hint">service in module <code ng:non-bindable="">ngResource</code>
 </span>
 </div>
@@ -64,7 +64,7 @@ GET request, otherwise if a cache instance built with
 caching.</li>
 <li><strong><code>timeout</code></strong> – <code>{number|Promise}</code> – timeout in milliseconds, or <a href="api/ng.$q"><code>promise</code></a> that
 should abort the request when resolved.</li>
-<li><strong><code>withCredentials</code></strong> - <code>{boolean}</code> - whether to to set the <code>withCredentials</code> flag on the
+<li><strong><code>withCredentials</code></strong> - <code>{boolean}</code> - whether to set the <code>withCredentials</code> flag on the
 XHR object. See <a href="https://developer.mozilla.org/en/http_access_control#section_5">requests with credentials</a> for more information.</li>
 <li><strong><code>responseType</code></strong> - <code>{string}</code> - see <a href="https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest#responseType">requestType</a>.</li>
 <li><strong><code>interceptor</code></strong> - <code>{Object=}</code> - The interceptor object has two optional methods -
@@ -189,10 +189,10 @@ could rewrite the above example and get access to http headers as:</p>
 <h1>Buzz client</h1>
 <p>   Let&#39;s look at what a buzz client created with the <code>$resource</code> service looks like:
     <h4>Source</h2>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-143" source-edit-css="" source-edit-js="script.js-142" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-144"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-156" source-edit-css="" source-edit-js="script.js-155" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-157"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-143" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-143">
+<pre class="prettyprint linenums" ng-set-text="index.html-156" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-156">
        
 
        <div ng-controller="BuzzController">
@@ -215,8 +215,8 @@ could rewrite the above example and get access to http headers as:</p>
       </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-142"></pre>
-<script type="text/ng-template" id="script.js-142">
+<pre class="prettyprint linenums" ng-set-text="script.js-155"></pre>
+<script type="text/ng-template" id="script.js-155">
          function BuzzController($resource) {
            this.userId = 'googlebuzz';
            this.Activity = $resource(
@@ -238,11 +238,11 @@ could rewrite the above example and get access to http headers as:</p>
        </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-144"></pre>
-<script type="text/ng-template" id="scenario.js-144">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-157"></pre>
+<script type="text/ng-template" id="scenario.js-157">
       </script>
 </div>
 </div><h2>Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-143" ng-eval-javascript="script.js-142"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-156" ng-eval-javascript="script.js-155"></div>
 </div></div>
 </div>

@@ -18,8 +18,11 @@
   }
 });</code></pre>
 <p>Following are invalid uses of this directive:</p>
-<pre><code>&lt;my-directive bind=&quot;1+2&quot;&gt;    &lt;!-- ERROR because `1+2=localValue` is an invalid statement --&gt;
-&lt;my-directive bind=&quot;myFn()&quot;&gt; &lt;!-- ERROR because `myFn()=localValue` is an invalid statement --&gt;</code></pre>
+<pre><code>&lt;!-- ERROR because `1+2=localValue` is an invalid statement --&gt;
+&lt;my-directive bind=&quot;1+2&quot;&gt;
+
+&lt;!-- ERROR because `myFn()=localValue` is an invalid statement --&gt;
+&lt;my-directive bind=&quot;myFn()&quot;&gt;</code></pre>
 <p>To resolve this error, always use path expressions with scope properties that are two-way data-bound:</p>
 <pre><code>&lt;my-directive bind=&quot;some.property&quot;&gt;
 &lt;my-directive bind=&quot;some[3][&#39;property&#39;]&quot;&gt;</code></pre>

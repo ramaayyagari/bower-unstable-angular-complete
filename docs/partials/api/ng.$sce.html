@@ -1,4 +1,4 @@
-<a href="http://github.com/angular/angular.js/tree/v1.2.0rc1/src/ng/sce.js#L332" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ng/sce.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">$sce</code>
+<a href="http://github.com/angular/angular.js/tree/v1.2.0-rc.2/src/ng/sce.js#L395" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ng/sce.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">$sce</code>
 <div><span class="hint">service in module <code ng:non-bindable="">ng</code>
 </span>
 </div>
@@ -7,9 +7,9 @@
 <div class="description"><div class="ng-sce-page"><p><code>$sce</code> is a service that provides Strict Contextual Escaping services to AngularJS.</p>
 <h3>Strict Contextual Escaping</h3>
 <p>Strict Contextual Escaping (SCE) is a mode in which AngularJS requires bindings in certain
-contexts to result in a value that is marked as safe to use for that context One example of such
-a context is binding arbitrary html controlled by the user via <code>ng-bind-html</code>.  We refer to these
-contexts as privileged or SCE contexts.</p>
+contexts to result in a value that is marked as safe to use for that context.  One example of
+such a context is binding arbitrary html controlled by the user via <code>ng-bind-html</code>.  We refer
+to these contexts as privileged or SCE contexts.</p>
 <p>As of version 1.2, Angular ships with SCE enabled by default.</p>
 <p>Note:  When enabled (the default), IE8 in quirks mode is not supported.  In this mode, IE8 allows
 one to execute arbitrary javascript by the use of the expression() syntax.  Refer
@@ -116,7 +116,57 @@ security onto an application later.</p>
 </tr>
 </tbody>
 </table>
-<h2>Show me an example.</h4>
+<h2>Format of items in <a href="api/ng.$sceDelegateProvider#resourceUrlWhitelist"><code>resourceUrlWhitelist</code></a>/<a href="api/ng.$sceDelegateProvider#resourceUrlBlacklist"><code>Blacklist</code></a> <a name="resourceUrlPatternItem"></a></h2>
+<p> Each element in these arrays must be one of the following:</p>
+<ul>
+<li><strong>&#39;self&#39;</strong><ul>
+<li>The special <strong>string</strong>, <code>&#39;self&#39;</code>, can be used to match against all URLs of the <strong>same
+domain</strong> as the application document using the <strong>same protocol</strong>.</li>
+</ul>
+</li>
+<li><strong>String</strong> (except the special value <code>&#39;self&#39;</code>)<ul>
+<li>The string is matched against the full <em>normalized / absolute URL</em> of the resource
+being tested (substring matches are not good enough.)</li>
+<li>There are exactly <strong>two wildcard sequences</strong> - <code>*</code> and <code>**</code>.  All other characters
+match themselves.</li>
+<li><code>*</code>: matches zero or more occurances of any character other than one of the following 6
+characters: &#39;<code>:</code>&#39;, &#39;<code>/</code>&#39;, &#39;<code>.</code>&#39;, &#39;<code>?</code>&#39;, &#39;<code>&amp;</code>&#39; and &#39;;&#39;.  It&#39;s a useful wildcard for use
+in a whitelist.</li>
+<li><code>**</code>: matches zero or more occurances of <em>any</em> character.  As such, it&#39;s not
+not appropriate to use in for a scheme, domain, etc. as it would match too much.  (e.g.
+<a href="http://**.example.com/">http://**.example.com/</a> would match <a href="http://evil.com/?ignore=.example.com/">http://evil.com/?ignore=.example.com/</a> and that might
+not have been the intention.)  It&#39;s usage at the very end of the path is ok.  (e.g.
+<a href="http://foo.example.com/templates/**">http://foo.example.com/templates/**</a>).</li>
+</ul>
+</li>
+<li><strong>RegExp</strong> (<em>see caveat below</em>)<ul>
+<li><em>Caveat</em>:  While regular expressions are powerful and offer great flexibility,  their syntax
+(and all the inevitable escaping) makes them <em>harder to maintain</em>.  It&#39;s easy to
+accidentally introduce a bug when one updates a complex expression (imho, all regexes should
+have good test coverage.).  For instance, the use of <code>.</code> in the regex is correct only in a
+small number of cases.  A <code>.</code> character in the regex used when matching the scheme or a
+subdomain could be matched against a <code>:</code> or literal <code>.</code> that was likely not intended.   It
+is highly recommended to use the string patterns and only fall back to regular expressions
+if they as a last resort.</li>
+<li>The regular expression must be an instance of RegExp (i.e. not a string.)  It is
+matched against the <strong>entire</strong> <em>normalized / absolute URL</em> of the resource being tested
+(even when the RegExp did not have the <code>^</code> and <code>$</code> codes.)  In addition, any flags
+present on the RegExp (such as multiline, global, ignoreCase) are ignored.</li>
+<li>If you are generating your Javascript from some other templating engine (not
+recommended, e.g. in issue <a href="https://github.com/angular/angular.js/issues/4006">#4006</a>),
+remember to escape your regular expression (and be aware that you might need more than
+one level of escaping depending on your templating engine and the way you interpolated
+the value.)  Do make use of your platform&#39;s escaping mechanism as it might be good
+enough before coding your own.  e.g. Ruby has
+<a href="http://www.ruby-doc.org/core-2.0.0/Regexp.html#method-c-escape">Regexp.escape(str)</a>
+and Python has <a href="http://docs.python.org/library/re.html#re.escape">re.escape</a>.
+Javascript lacks a similar built in function for escaping.  Take a look at Google
+Closure library&#39;s <a href="http://docs.closure-library.googlecode.com/git/closure_goog_string_string.js.source.html#line962">goog.string.regExpEscape(s)</a>.</li>
+</ul>
+</li>
+</ul>
+<p>Refer <a href="api/ng.$sceDelegateProvider#example"><code>$sceDelegateProvider</code></a> for an example.</p>
+<h2>Show me an example using SCE.</h4>
 </div></div>
 <div class="member method"><h2 id="Methods">Methods</h2>
 <ul class="methods"><li><h3 id="getTrusted">getTrusted(type, maybeTrusted)</h3>
@@ -289,10 +339,10 @@ have to do it at module config time on <a href="api/ng.$sceProvider"><code>$sceP
 </div>
 <h2 id="Example">Example</h2>
 <div class="example"><div class="ng-sce-page"><h4>Source</h2>
-<div source-edit="mySceApp" source-edit-deps="angular.js script.js" source-edit-html="index.html-134" source-edit-css="" source-edit-js="script.js-135" source-edit-json="test_data.json" source-edit-unit="" source-edit-scenario="scenario.js-136"></div>
+<div source-edit="mySceApp" source-edit-deps="angular.js script.js" source-edit-html="index.html-145" source-edit-css="" source-edit-js="script.js-146" source-edit-json="test_data.json" source-edit-unit="" source-edit-scenario="scenario.js-147"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-134" ng-html-wrap="mySceApp angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-134">
+<pre class="prettyprint linenums" ng-set-text="index.html-145" ng-html-wrap="mySceApp angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-145">
   <div ng-controller="myAppController as myCtrl">
     <i ng-bind-html="myCtrl.explicitlyTrustedHtml" id="explicitlyTrustedHtml"></i><br><br>
     <b>User comments</b><br>
@@ -308,8 +358,8 @@ have to do it at module config time on <a href="api/ng.$sceProvider"><code>$sceP
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-135"></pre>
-<script type="text/ng-template" id="script.js-135">
+<pre class="prettyprint linenums" ng-set-text="script.js-146"></pre>
+<script type="text/ng-template" id="script.js-146">
   var mySceApp = angular.module('mySceApp', ['ngSanitize']);
 
   mySceApp.controller("myAppController", function myAppController($http, $templateCache, $sce) {
@@ -337,8 +387,8 @@ have to do it at module config time on <a href="api/ng.$sceProvider"><code>$sceP
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-136"></pre>
-<script type="text/ng-template" id="scenario.js-136">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-147"></pre>
+<script type="text/ng-template" id="scenario.js-147">
   describe('SCE doc demo', function() {
     it('should sanitize untrusted values', function() {
       expect(element('.htmlComment').html()).toBe('<span>Is <i>anyone</i> reading this?</span>');
@@ -352,7 +402,7 @@ have to do it at module config time on <a href="api/ng.$sceProvider"><code>$sceP
 </script>
 </div>
 </div><h2>Demo</h2>
-<div class="well doc-example-live animate-container" ng-embed-app="mySceApp" ng-set-html="index.html-134" ng-eval-javascript="script.js-135"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="mySceApp" ng-set-html="index.html-145" ng-eval-javascript="script.js-146"></div>
 <h2>Can I disable SCE completely?</h4>
 <p>Yes, you can.  However, this is strongly discouraged.  SCE gives you a lot of security benefits
 for little coding overhead.  It will be much harder to take an SCE disabled application and

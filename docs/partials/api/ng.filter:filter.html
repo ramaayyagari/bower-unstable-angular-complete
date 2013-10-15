@@ -1,4 +1,4 @@
-<a href="http://github.com/angular/angular.js/tree/v1.2.0rc1/src/ng/filter/filter.js#L3" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ng/filter/filter.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">filter</code>
+<a href="http://github.com/angular/angular.js/tree/v1.2.0-rc.2/src/ng/filter/filter.js#L3" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ng/filter/filter.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">filter</code>
 <div><span class="hint">filter in module <code ng:non-bindable="">ng</code>
 </span>
 </div>
@@ -55,10 +55,10 @@ insensitive way.</p>
 </div></td></tr></tbody></table></div>
 <h2 id="Example">Example</h2>
 <div class="example"><div class="ng-filter-page ng-filter-filter-page"><h4>Source</h2>
-<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-108" source-edit-css="" source-edit-js="" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-109"></div>
+<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-119" source-edit-css="" source-edit-js="" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-120"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-108" ng-html-wrap=" angular.js"></pre>
-<script type="text/ng-template" id="index.html-108">
+<pre class="prettyprint linenums" ng-set-text="index.html-119" ng-html-wrap=" angular.js"></pre>
+<script type="text/ng-template" id="index.html-119">
   <div ng-init="friends = [{name:'John', phone:'555-1276'},
                            {name:'Mary', phone:'800-BIG-MARY'},
                            {name:'Mike', phone:'555-4321'},
@@ -89,8 +89,8 @@ insensitive way.</p>
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-109"></pre>
-<script type="text/ng-template" id="scenario.js-109">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-120"></pre>
+<script type="text/ng-template" id="scenario.js-120">
   it('should search across all fields when filtering with a string', function() {
     input('searchText').enter('m');
     expect(repeater('#searchTextResults tr', 'friend in friends').column('friend.name')).
@@ -115,6 +115,6 @@ insensitive way.</p>
 </script>
 </div>
 </div><h2>Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-108" ng-eval-javascript=""></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-119" ng-eval-javascript=""></div>
 </div></div>
 </div>

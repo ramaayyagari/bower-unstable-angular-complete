@@ -46,6 +46,8 @@ in Angular.</p>
 <p>Yes, Angular can use <a href="http://jquery.com/">jQuery</a> if it&#39;s present in your app when the
 application is being bootstrapped. If jQuery is not present in your script path, Angular falls back
 to its own implementation of the subset of jQuery that we call <a href="api/angular.element"><code>jQLite</code></a>.</p>
+<p>Due to a change to use <code>on()</code>/<code>off()</code> rather than <code>bind()</code>`unbind()`, Angular 1.2 only operates with
+jQuery 1.7.1 or above.</p>
 <h3>What is testability like in Angular?</h3>
 <p>Very testable and designed this way from ground up. It has an integrated dependency injection
 framework, provides mocks for many heavy dependencies (server-side communication). See
@@ -63,9 +65,10 @@ The logo design is licensed under a &quot;<a href="http://creativecommons.org/li
 make our schwag will be happy to do a custom run for you, based on our existing template. By using the design they have on file,
 they&#39;ll waive the setup costs, and you can order any quantity you need.</p>
 <p><strong>Stickers</strong>
-Contact Tom Witting (or anyone in sales) via email at tom@stickergiant.com, and tell him you want to order some AngularJS
+For orders of 250 stickers or more within Canada or the United States, contact Tom Witting (or anyone in sales) via email at tom@stickergiant.com, and tell him you want to order some AngularJS
 stickers just like the ones in job #42711. You&#39;ll have to give them your own info for billing and shipping.</p>
 <p>As long as the design stays exactly the same, <a href="http://www.stickergiant.com">StickerGiant</a> will give you a reorder discount.</p>
+<p>For a smaller order, or for other countries, we suggest downloading the logo artwork and making your own.</p>
 <h2>Common Pitfalls</h3>
 <p>The Angular support channel (#angularjs on Freenode) sees a number of recurring pitfalls that new users of Angular fall into.
 This document aims to point them out before you discover them the hard way.</p>

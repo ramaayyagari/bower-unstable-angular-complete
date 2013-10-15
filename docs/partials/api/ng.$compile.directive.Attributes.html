@@ -1,4 +1,4 @@
-<a href="http://github.com/angular/angular.js/tree/v1.2.0rc1/src/ng/compile.js#L1394" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ng/compile.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">Attributes</code>
+<a href="http://github.com/angular/angular.js/tree/v1.2.0-rc.2/src/ng/compile.js#L1454" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="http://github.com/angular/angular.js/edit/master/src/ng/compile.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code ng:non-bindable="">Attributes</code>
 <div><span class="hint">type in module <code ng:non-bindable="">ng</code>
 </span>
 </div>
@@ -15,6 +15,18 @@ since all of these are treated as equivalent in Angular:</p>
 are enabled then an animation will be triggered for the class addition.</p>
 </div><h5 id="parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>classVal</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-compile-directive-attributes-addclass-page"><p>The className value that will be added to the element</p>
 </div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="$observe">$observe(key, fn)</h3>
+<div class="$observe"><div class="ng-compile-directive-attributes-observe-page"><p>Observes an interpolated attribute.</p>
+<p>The observer function will be invoked once during the next <code>$digest</code> following
+compilation. The observer is then invoked whenever the interpolated value
+changes.</p>
+</div><h5 id="parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>key</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-compile-directive-attributes-observe-page"><p>Normalized key. (ie ngAttribute) .</p>
+</div></td></tr><tr><td>fn</td><td><a href="" class="label type-hint type-hint-function">function(interpolatedValue</a></td><td><div class="ng-compile-directive-attributes-observe-page"><p>Function that will be called whenever
+the interpolated value of the attribute changes.
+See the <a href="guide/directive#Attributes">Directives</a> guide for more info.</p>
+</div></td></tr></tbody></table><h5 id="returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-function">function()</a></td><td><div class="ng-compile-directive-attributes-observe-page"><p>the <code>fn</code> parameter.</p>
+</div></td></tr></table></div>
 </li>
 <li><h3 id="$removeClass">$removeClass(classVal)</h3>
 <div class="$removeclass"><div class="ng-compile-directive-attributes-removeclass-page"><p>Removes the CSS class value specified by the classVal parameter from the element. If animations
